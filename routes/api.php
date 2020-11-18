@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\FileController;
+use App\Http\Controllers\Api\DatasetController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +27,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::prefix('v1')->group(function(){
 	Route::post('store-records', [FileController::class, 'records']);
 	Route::post('store-events', [FileController::class, 'events']);
+	Route::get('get-data/{id}', [DatasetController::class, 'getRecordWithEvents']);
 });
